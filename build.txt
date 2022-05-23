@@ -1,0 +1,9 @@
+author = Caseratis
+version = 2.0
+displayName = Helpful NPCs
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
+includePDB = true
+homepage = https://forums.terraria.org/index.php?threads/helpful-npcs.60186/
