@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using On.Terraria.GameContent.ItemDropRules;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -94,9 +95,11 @@ namespace HelpfulNPCs
             return false;
         }
 
-        public override string TownNPCName()
+        public override List<string> SetNPCNameList()
         {
-            return "Hunter";
+            return new List<string>()
+                { "Hunter",
+            };
         }
 
         public override string GetChat()

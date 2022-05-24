@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -90,19 +91,14 @@ namespace HelpfulNPCs
             return false;
         }
 
-        public override string TownNPCName()
+        public override List<string> SetNPCNameList()
         {
-            switch (WorldGen.genRand.Next(4))
-            {
-                case 0:
-                    return "Gold";
-                case 1:
-                    return "John";
-                case 2:
-                    return "Edward";
-                default:
-                    return "Thomas";
-            }
+            return new List<string>()
+                { "Gold",
+                  "John",
+                  "Edward",
+                  "Thomas"
+            };
         }
 
         public override string GetChat()
