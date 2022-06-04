@@ -62,7 +62,7 @@ namespace HelpfulNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("The Miner spends most of his time deep underground. If he isn't mining, he can be found sleeping with a beer in his hand."),
+				new FlavorTextBestiaryInfoElement("The Miner spends most of his time deep underground. For some reason, he actually enjoys mining."),
             });
         }
 
@@ -106,11 +106,11 @@ namespace HelpfulNPCs
             switch (Main.rand.Next(3))
             {
                 case 0:
-                    return "I was one of the greatest miners during the gold rush.";
+                    return "I love being down in the mines.";
                 case 1:
-                    return "Why go mine if you can buy everything?";
+                    return "I have no use for these shiny gems and ore, want to buy them off me?";
                 default:
-                    return "Diggy Dig Dig.";
+                    return "What do you mean I should mine at Y level 11?";
             }
         }
 

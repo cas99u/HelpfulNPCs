@@ -113,7 +113,7 @@ namespace HelpfulNPCs
                 case 1:
                     return "There's no such thing as magic beanstalks.";
                 case 2:
-                    return "No, these critters are perfectly happy.";
+                    return "My research on Terrarian critters is almost complete.";
                 default:
                     return "Growing plants takes hardwork and dedication.";
             }

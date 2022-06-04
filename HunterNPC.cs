@@ -50,8 +50,7 @@ namespace HelpfulNPCs
                 .SetBiomeAffection<OceanBiome>(AffectionLevel.Dislike)
                 .SetNPCAffection(NPCID.ArmsDealer, AffectionLevel.Love)
                 .SetNPCAffection(NPCID.WitchDoctor, AffectionLevel.Like)
-                .SetNPCAffection(ModContent.NPCType<EnvironmentalistNPC>(), AffectionLevel.Dislike)
-                .SetNPCAffection(NPCID.Dryad, AffectionLevel.Hate)
+                .SetNPCAffection(NPCID.PartyGirl, AffectionLevel.Dislike)
             ;
 
         }
@@ -107,12 +106,11 @@ namespace HelpfulNPCs
             switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "Pew Pew Pew";
+                    return "Quiet, I need to focus.";
                 case 1:
-                    return "Collecting monster souls is child's play.";
+                    return "I have slain many monsters.";
                 case 2:
                     return "Yes, I am Hunter the Hunter.";
-            
                 default:
                     return "You should be glad that I'm not hunting you.";
             }
