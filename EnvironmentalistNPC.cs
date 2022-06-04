@@ -370,5 +370,7 @@ namespace HelpfulNPCs
             gravityCorrection = 0;
             randomOffset = .2f;
         }
+
+        public override bool CanGoToStatue(bool toKingStatue) => true;
     }
 }

@@ -363,16 +363,15 @@ namespace HelpfulNPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 25;
+            cooldown = 60;
             randExtraCooldown = 25;
         }
 
         public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
-            scale = 1f;
-            item = (Texture2D)Terraria.GameContent.TextureAssets.Item[ItemID.Rockfish]; //this defines the item that this npc will use
+            item = ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.Rockfish).Value; //this defines the item that this npc will use
             
-            itemSize = 35;
+            itemSize = 42;
         }
 
         public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight) //  Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon.
@@ -380,5 +379,7 @@ namespace HelpfulNPCs
             itemWidth = 35;
             itemHeight = 35;
         }
+
+        public override bool CanGoToStatue(bool toKingStatue) => true;
     }
 }

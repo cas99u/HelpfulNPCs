@@ -518,5 +518,7 @@ namespace HelpfulNPCs
             }
 
         }
+
+        public override bool CanGoToStatue(bool toKingStatue) => true;
     }
 }
