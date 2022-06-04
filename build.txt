@@ -1,4 +1,4 @@
-author = Caseratis
+author = Cas
 version = 2.0
 displayName = Helpful NPCs
 hideCode = false

@@ -244,11 +244,6 @@ namespace HelpfulNPCs
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
                     nextSlot++;
                 }
-
-                if (NPC.downedGolemBoss)
-                {
-                    
-                }
             }
 
             else
