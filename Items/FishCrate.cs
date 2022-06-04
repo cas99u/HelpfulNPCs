@@ -15,7 +15,7 @@ namespace HelpfulNPCs.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fish Crate");
-            Tooltip.SetDefault("Gives the current quest fish");
+            Tooltip.SetDefault("Right click for current quest fish");
         }
 
         public override void SetDefaults()
