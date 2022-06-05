@@ -44,7 +44,7 @@ namespace HelpfulNPCs
         {
             NPC.friendly = true;
             NPC.width = 52;
-            NPC.height = 46;
+            NPC.height = 48;
             NPC.aiStyle = 0;
             NPC.damage = 0;
             NPC.defense = 15;
@@ -73,7 +73,7 @@ namespace HelpfulNPCs
         {
             if (chester)
             {
-                NPC.frame.Y = 46;
+                NPC.frame.Y = 48;
 
             } else
             {
@@ -117,6 +117,8 @@ namespace HelpfulNPCs
         }
         public override void AI()
         {
+
+
             if (!hasItem)
             {
                 surfaceItem = getItem(surface);
@@ -131,28 +133,46 @@ namespace HelpfulNPCs
                 hasItem = true;
                 NPC.GivenName = "Mysterious Chest";
             }
+            if (!chester) NPC.ai[0]++;
 
-            NPC.ai[0]++;
-            if (!chester && NPC.ai[0] == 120)
+            if (NPC.ai[0] == 120)
             {
                 NPC.velocity.Y = -3f;
                 NPC.rotation = 0f;
                 NPC.ai[0] = 0;
             }
-            if (!chester && NPC.ai[0] > 5 && NPC.ai[0] <= 10)
+            if (NPC.ai[0] > 5 && NPC.ai[0] <= 10)
             {
                 NPC.velocity.Y = 0f;
                 NPC.rotation += 0.05f;
             }
-            if (!chester && NPC.ai[0] > 10 && NPC.ai[0] <= 20)
+            if (NPC.ai[0] > 10 && NPC.ai[0] <= 20)
             {
                 NPC.velocity.Y = 0f;
                 NPC.rotation -= 0.05f;
             }
-            if (!chester && NPC.ai[0] > 20 && NPC.ai[0] <= 25)
+            if ( NPC.ai[0] > 20 && NPC.ai[0] <= 25)
             {
                 NPC.velocity.Y = 0f;
                 NPC.rotation += 0.05f;
+            }
+
+            if (NPC.ai[0] == 0)
+            {
+                Rectangle location = new Rectangle((int)NPC.position.X, (int)NPC.position.Y + 45, NPC.width, 1);
+                switch (Main.rand.Next(0, 6))
+                {
+                    case 1:
+                        CombatText.NewText(location, Color.Aqua, "Psst...");
+                        break;
+                    case 2:
+                        CombatText.NewText(location, Color.Aqua, "Open me!");
+                        break;
+                    case 3:
+                        CombatText.NewText(location, Color.Aqua, "Hey!");
+                        break;
+                }
+                
             }
         }
 
@@ -290,32 +310,35 @@ namespace HelpfulNPCs
 
             if (Main.LocalPlayer.ZoneRockLayerHeight)
             {
-                shop.item[nextSlot].SetDefaults(cavernItem);
-                nextSlot++;
-            }
+                if (Main.LocalPlayer.ZoneDungeon)
+                {
+                    shop.item[nextSlot].SetDefaults(dungeonItem);
+                    nextSlot++;
+                }
 
-            if (Main.LocalPlayer.ZoneJungle && Main.LocalPlayer.ZoneRockLayerHeight)
-            {
-                shop.item[nextSlot].SetDefaults(jungleItem);
-                nextSlot++;
-            }
+                else if (Main.LocalPlayer.ZoneJungle)
+                {
+                    shop.item[nextSlot].SetDefaults(jungleItem);
+                    nextSlot++;
+                }
 
-            if (Main.LocalPlayer.ZoneDungeon)
-            {
-                shop.item[nextSlot].SetDefaults(dungeonItem);
-                nextSlot++;
-            }
+                else if (Main.LocalPlayer.ZoneSnow)
+                {
+                    shop.item[nextSlot].SetDefaults(iceItem);
+                    nextSlot++;
+                }
 
-            if (Main.LocalPlayer.ZoneSnow && Main.LocalPlayer.ZoneRockLayerHeight)
-            {
-                shop.item[nextSlot].SetDefaults(iceItem);
-                nextSlot++;
-            }
+                else if (Main.LocalPlayer.ZoneDesert)
+                {
+                    shop.item[nextSlot].SetDefaults(desertItem);
+                    nextSlot++;
+                }
 
-            if (Main.LocalPlayer.ZoneDesert && Main.LocalPlayer.ZoneRockLayerHeight)
-            {
-                shop.item[nextSlot].SetDefaults(desertItem);
-                nextSlot++;
+                else
+                {
+                    shop.item[nextSlot].SetDefaults(cavernItem);
+                    nextSlot++;
+                }
             }
 
             if (Main.LocalPlayer.ZoneUnderworldHeight)
