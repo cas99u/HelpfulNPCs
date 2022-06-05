@@ -179,50 +179,50 @@ namespace HelpfulNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.Blinkroot);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Daybloom);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.DaybloomSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.DaybloomSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Deathweed);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.DeathweedSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.DeathweedSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Fireblossom);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.FireblossomSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.FireblossomSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Moonglow);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.MoonglowSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.MoonglowSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Shiverthorn);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.ShiverthornSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.ShiverthornSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Waterleaf);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.WaterleafSeeds);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.WaterleafSeeds);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Pumpkin);
                 nextSlot++;
 
-                shop.item[nextSlot].SetDefaults(ItemID.PumpkinSeed);
-                nextSlot++;
+                //shop.item[nextSlot].SetDefaults(ItemID.PumpkinSeed);
+                //nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.JungleSpores);
                 nextSlot++;
