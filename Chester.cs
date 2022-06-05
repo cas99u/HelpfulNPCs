@@ -339,7 +339,7 @@ namespace HelpfulNPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return (HelpfulNPCs.config.ChesterCanSpawn && !NPC.AnyNPCs(ModContent.NPCType<Chester>())) ? 0.04f : 0f;
+            return (HelpfulNPCs.config.ChesterCanSpawn && !NPC.AnyNPCs(ModContent.NPCType<Chester>())) ? 0.02f : 0f;
         }
 
         private int getItem(List<int> items)

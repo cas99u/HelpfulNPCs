@@ -92,6 +92,7 @@ namespace HelpfulNPCs
                 return true;
             }
             return false;
+           
         }
 
         public override List<string> SetNPCNameList()
