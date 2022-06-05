@@ -435,7 +435,26 @@ namespace HelpfulNPCs
                 if (NPC.downedMoonlord)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.MoonlordArrow);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 3);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 1);
+                    nextSlot++;
+                }
+
+                if (NPC.downedQueenBee)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.PoisonDart);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 5);
+                    nextSlot++;
+                }
+
+                if (Main.hardMode)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.CrystalDart);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.CursedDart);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.IchorDart);
                     nextSlot++;
                 }
                 
