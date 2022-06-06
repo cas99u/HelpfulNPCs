@@ -24,7 +24,7 @@ namespace HelpfulNPCs.Items
         {
             Item.width = 34;
             Item.height = 34;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ItemRarityID.Quest;
             Item.maxStack = 999;
             Item.value = 0;
         }
