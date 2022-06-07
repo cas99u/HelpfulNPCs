@@ -1,5 +1,5 @@
 author = Cas
-version = 2.0
+version = 2.0.1
 displayName = Helpful NPCs
 hideCode = false
 hideResources = false

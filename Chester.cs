@@ -134,6 +134,7 @@ namespace HelpfulNPCs
                 NPC.GivenName = "Mysterious Chest";
             }
             if (!chester) NPC.ai[0]++;
+            else NPC.ai[0] = 1;
 
             if (NPC.ai[0] == 120)
             {
