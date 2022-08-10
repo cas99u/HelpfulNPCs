@@ -213,6 +213,7 @@ namespace HelpfulNPCs
                 nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ItemID.Oyster);
+                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 3);
                 nextSlot++;
 
                 if (Main.hardMode)
