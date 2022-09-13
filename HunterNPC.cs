@@ -175,6 +175,9 @@ namespace HelpfulNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.AntlionMandible);
                 nextSlot++;
 
+                shop.item[nextSlot].SetDefaults(ItemID.FlinxFur);
+                nextSlot++;
+
                 shop.item[nextSlot].SetDefaults(ItemID.RottenChunk);
                 nextSlot++;
 

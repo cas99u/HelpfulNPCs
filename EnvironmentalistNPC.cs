@@ -141,6 +141,10 @@ namespace HelpfulNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.ClayPot);
                 nextSlot++;
 
+                shop.item[nextSlot].SetDefaults(ItemID.Cobweb);
+                shop.item[nextSlot].shopCustomPrice = 10;
+                nextSlot++;
+
                 shop.item[nextSlot].SetDefaults(ItemID.Coral);
                 nextSlot++;
 
