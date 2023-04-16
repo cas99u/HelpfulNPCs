@@ -17,7 +17,7 @@ namespace HelpfulNPCs
     [AutoloadHead]
     public class HunterNPC : ModNPC
     {
-        private static int shopChoice = 0;
+        internal static int shopChoice { get; private set; } = 0;
 
         public override string Texture
         {
