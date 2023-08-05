@@ -4,7 +4,7 @@ namespace HelpfulNPCs
 {
     class HelpfulNPCs : Mod
     {
-        internal static Config config;
+        // internal static Config config;
         public HelpfulNPCs()
         {
             
@@ -13,7 +13,7 @@ namespace HelpfulNPCs
 
         public override void Unload()
         {
-            config = null;
+            // config = null;
         }
 
         public override void PostSetupContent()

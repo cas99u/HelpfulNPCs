@@ -15,8 +15,8 @@ namespace HelpfulNPCs.Items
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fish Crate");
-            Tooltip.SetDefault("Right click to receive the current quest fish");
+            // DisplayName.SetDefault("Fish Crate");
+            // Tooltip.SetDefault("Right click to receive the current quest fish");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
@@ -42,7 +42,11 @@ namespace HelpfulNPCs.Items
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = ModContent.Request<Texture2D>("Terraria/Images/Item_" + Main.anglerQuestItemNetIDs[Main.anglerQuest]).Value;
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y - 10, (int)(texture.Width), (int)(texture.Height)), drawColor);
+            if (texture == null)
+            {
+                return true;
+            }
+            spriteBatch.Draw(texture, new Rectangle((int)position.X - 10, (int)position.Y - 25, (int)(texture.Width), (int)(texture.Height)), drawColor);
             return true;
         }
 

@@ -27,7 +27,7 @@ namespace HelpfulNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Miner");
+            // DisplayName.SetDefault("Miner");
             Main.npcFrameCount[NPC.type] = 26;
             NPCID.Sets.AttackFrameCount[NPC.type] = 5;
             NPCID.Sets.DangerDetectRange[NPC.type] = 150;
@@ -83,13 +83,25 @@ namespace HelpfulNPCs
 
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
-            if (NPC.downedBoss1 && HelpfulNPCs.config.MinerCanSpawn)
+            for (int k = 0; k < Main.maxPlayers; k++)
             {
-                return true;
+                Player player = Main.player[k];
+                if (!player.active)
+                {
+                    continue;
+                }
+
+
+                if (player.inventory.Any(item => item.type == ModContent.ItemType<Items.GlimmeringStone>()))
+                {
+                    return true;
+                }
             }
+
             return false;
+
         }
 
         public override List<string> SetNPCNameList()
@@ -121,155 +133,204 @@ namespace HelpfulNPCs
             button2 = "Gems";
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
-            Bars = firstButton;
-            shop = true;
-
-           
-        }
-
-        public override void SetupShop(Chest shop, ref int nextSlot)
-        {
-            if (Bars)
+            if (firstButton)
             {
-                shop.item[nextSlot].SetDefaults(ItemID.StoneBlock);
-                shop.item[nextSlot].shopCustomPrice = 1;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.DirtBlock);
-                shop.item[nextSlot].shopCustomPrice = 1;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.MudBlock);
-                shop.item[nextSlot].shopCustomPrice = 1;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Granite);
-                shop.item[nextSlot].shopCustomPrice = 1;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Marble);
-                shop.item[nextSlot].shopCustomPrice = 1;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.CopperBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.TinBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.IronBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.LeadBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.SilverBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.TungstenBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GoldBar);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.PlatinumBar);
-                nextSlot++;
-
-                if (NPC.downedBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.DemoniteBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.CrimtaneBar);
-                    nextSlot++;
-                }
-
-                if (NPC.downedBoss2)
-                {
-
-
-                    shop.item[nextSlot].SetDefaults(ItemID.MeteoriteBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Obsidian);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 5);
-                    nextSlot++;
-                }
-
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.HellstoneBar);
-                    nextSlot++;
-                    shop.item[nextSlot].SetDefaults(ItemID.LifeCrystal);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
-                    nextSlot++;
-                }
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.CrystalShard);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.CobaltBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.PalladiumBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.MythrilBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.OrichalcumBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.AdamantiteBar);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.TitaniumBar);
-                    nextSlot++;
-                }
-
-                if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteBar);
-                    nextSlot++;
-
-                }
-
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.LifeFruit);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                    nextSlot++;
-                }
+                shop = "Bars";
             }
-
             else
             {
-                shop.item[nextSlot].SetDefaults(ItemID.Amethyst);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Topaz);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Sapphire);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Emerald);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Ruby);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Diamond);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Amber);
-                nextSlot++;
+                shop = "Gems";
             }
+
         }
+
+        public override void AddShops()
+        {
+            var barShop = new NPCShop(Type, "Bars")
+                .Add(new Item(ItemID.StoneBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.DirtBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.MudBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.Granite) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.Marble) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(ItemID.CopperBar)
+                .Add(ItemID.TinBar)
+                .Add(ItemID.IronBar)
+                .Add(ItemID.LeadBar)
+                .Add(ItemID.SilverBar)
+                .Add(ItemID.TungstenBar)
+                .Add(ItemID.GoldBar)
+                .Add(ItemID.PlatinumBar)
+                .Add(ItemID.DemoniteBar, Condition.DownedEyeOfCthulhu)
+                .Add(ItemID.CrimtaneBar, Condition.DownedEyeOfCthulhu)
+                .Add(ItemID.MeteoriteBar, Condition.DownedEowOrBoc)
+                .Add(new Item(ItemID.Obsidian) { shopCustomPrice = Item.buyPrice(silver: 3) }, Condition.DownedEowOrBoc)
+                .Add(ItemID.Hellstone, Condition.DownedSkeletron)
+                .Add(new Item(ItemID.LifeCrystal) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedSkeletron)
+                .Add(ItemID.CrystalShard, Condition.Hardmode)
+                .Add(ItemID.CobaltBar, Condition.Hardmode)
+                .Add(ItemID.PalladiumBar, Condition.Hardmode)
+                .Add(ItemID.MythrilBar, Condition.Hardmode)
+                .Add(ItemID.OrichalcumBar, Condition.Hardmode)
+                .Add(ItemID.AdamantiteBar, Condition.Hardmode)
+                .Add(ItemID.TitaniumBar, Condition.Hardmode)
+                .Add(ItemID.ChlorophyteBar, Condition.DownedMechBossAll)
+                .Add(new Item(ItemID.LifeFruit) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera);
+            barShop.Register();
+
+            var gemShop = new NPCShop(Type, "Gems")
+                .Add(ItemID.Amethyst)
+                .Add(ItemID.Topaz)
+                .Add(ItemID.Sapphire)
+                .Add(ItemID.Emerald)
+                .Add(ItemID.Ruby)
+                .Add(ItemID.Diamond)
+                .Add(ItemID.Amber);
+            gemShop.Register();
+        }
+
+        //public override void ModifyActiveShop(string shopName, Item[] items)
+        //{
+        //    if (Bars)
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ItemID.StoneBlock);
+        //        shop.item[nextSlot].shopCustomPrice = 1;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.DirtBlock);
+        //        shop.item[nextSlot].shopCustomPrice = 1;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.MudBlock);
+        //        shop.item[nextSlot].shopCustomPrice = 1;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Granite);
+        //        shop.item[nextSlot].shopCustomPrice = 1;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Marble);
+        //        shop.item[nextSlot].shopCustomPrice = 1;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.CopperBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.TinBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.IronBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.LeadBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.SilverBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.TungstenBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GoldBar);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.PlatinumBar);
+        //        nextSlot++;
+
+        //        if (NPC.downedBoss1)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.DemoniteBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.CrimtaneBar);
+        //            nextSlot++;
+        //        }
+
+        //        if (NPC.downedBoss2)
+        //        {
+
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.MeteoriteBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.Obsidian);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(silver: 5);
+        //            nextSlot++;
+        //        }
+
+        //        if (NPC.downedBoss3)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.HellstoneBar);
+        //            nextSlot++;
+        //            shop.item[nextSlot].SetDefaults(ItemID.LifeCrystal);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 5);
+        //            nextSlot++;
+        //        }
+
+        //        if (Main.hardMode)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.CrystalShard);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.CobaltBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.PalladiumBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.MythrilBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.OrichalcumBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.AdamantiteBar);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.TitaniumBar);
+        //            nextSlot++;
+        //        }
+
+        //        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteBar);
+        //            nextSlot++;
+
+        //        }
+
+        //        if (NPC.downedPlantBoss)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.LifeFruit);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
+        //            nextSlot++;
+        //        }
+        //    }
+
+        //    else
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ItemID.Amethyst);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Topaz);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Sapphire);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Emerald);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Ruby);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Diamond);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Amber);
+        //        nextSlot++;
+        //    }
+        //}
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
@@ -283,7 +344,7 @@ namespace HelpfulNPCs
             randExtraCooldown = 30;
         }
 
-        public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
+        public override void DrawTownAttackSwing(ref Texture2D item, ref Rectangle itemFrame, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
             //scale = 2f;
             item = ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.Minecart).Value; //this defines the item that this npc will use
@@ -293,7 +354,7 @@ namespace HelpfulNPCs
             if (NPC.spriteDirection == 1)
             {
                 offset.X = -7;
-            } 
+            }
 
             if (NPC.spriteDirection == -1)
             {

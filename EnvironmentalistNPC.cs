@@ -14,7 +14,6 @@ namespace HelpfulNPCs
     [AutoloadHead]
     public class EnvironmentalistNPC : ModNPC
     {
-        public static bool Plants = false;
 
         public override string Texture
         {
@@ -28,7 +27,6 @@ namespace HelpfulNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Environmentalist");
             Main.npcFrameCount[NPC.type] = 23;
             NPCID.Sets.AttackFrameCount[NPC.type] = 2;
             NPCID.Sets.DangerDetectRange[NPC.type] = 300;
@@ -85,13 +83,25 @@ namespace HelpfulNPCs
             AnimationType = NPCID.Merchant;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
-            if (NPC.downedQueenBee && HelpfulNPCs.config.EnvironmentalistCanSpawn)
+            for (int k = 0; k < Main.maxPlayers; k++)
             {
-                return true;
+                Player player = Main.player[k];
+                if (!player.active)
+                {
+                    continue;
+                }
+
+                
+                if (player.inventory.Any(item => item.type == ModContent.ItemType<Items.DazzlingFlower>()))
+                {
+                    return true;
+                }
             }
+
             return false;
+
         }
 
         public override List<string> SetNPCNameList()
@@ -125,230 +135,308 @@ namespace HelpfulNPCs
             button2 = "Critters";
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
-            Plants = firstButton;
-            shop = true;
+            if (firstButton)
+            {
+                shop = "Plants";
+            } else
+            {
+                shop = "Critters";
+            }
 
 
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void AddShops()
         {
-            if (Plants)
+            var plantShop = new NPCShop(Type, "Plants")
+                .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 5) })
+                .Add(new Item(ItemID.Cobweb) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(ItemID.Coral)
+                .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                .Add(new Item(ItemID.Starfish) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                .Add(ItemID.Mushroom)
+                .Add(ItemID.GrassSeeds)
+                .Add(ItemID.Pumpkin)
+                .Add(ItemID.PumpkinSeed)
+                .Add(ItemID.GlowingMushroom)
+                .Add(ItemID.MushroomGrassSeeds)
+                .Add(ItemID.VileMushroom)
+                .Add(ItemID.CorruptSeeds)
+                .Add(ItemID.ViciousMushroom)
+                .Add(ItemID.CrimsonSeeds)
+                .Add(ItemID.Blinkroot)
+                .Add(ItemID.BlinkrootSeeds)
+                .Add(ItemID.Daybloom)
+                .Add(ItemID.DaybloomSeeds)
+                .Add(ItemID.Shiverthorn)
+                .Add(ItemID.ShiverthornSeeds)
+                .Add(ItemID.Waterleaf)
+                .Add(ItemID.WaterleafSeeds)
+                .Add(ItemID.Deathweed, Condition.DownedEowOrBoc)
+                .Add(ItemID.DeathweedSeeds, Condition.DownedEowOrBoc)
+                .Add(ItemID.Moonglow, Condition.DownedQueenBee)
+                .Add(ItemID.MoonglowSeeds, Condition.DownedQueenBee)
+                .Add(ItemID.Fireblossom, Condition.DownedSkeletron)
+                .Add(ItemID.FireblossomSeeds, Condition.DownedSkeletron)
+                .Add(ItemID.JungleSpores, Condition.DownedQueenBee)
+                .Add(ItemID.JungleGrassSeeds);
+            for (int i = 4349; i <= 4354; i++)
             {
-
-                shop.item[nextSlot].SetDefaults(ItemID.ClayPot);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Cobweb);
-                shop.item[nextSlot].shopCustomPrice = 10;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Coral);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Seashell);
-                shop.item[nextSlot].shopCustomPrice = 100;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Starfish);
-                shop.item[nextSlot].shopCustomPrice = 100;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GrassSeeds);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.VileMushroom);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.CorruptSeeds);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ViciousMushroom);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.CrimsonSeeds);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Blinkroot);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Daybloom);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.DaybloomSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Deathweed);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.DeathweedSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Fireblossom);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.FireblossomSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Moonglow);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.MoonglowSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Shiverthorn);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.ShiverthornSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Waterleaf);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.WaterleafSeeds);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Pumpkin);
-                nextSlot++;
-
-                //shop.item[nextSlot].SetDefaults(ItemID.PumpkinSeed);
-                //nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.JungleSpores);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.JungleGrassSeeds);
-                nextSlot++;
-
-                for (int i = 4349; i <= 4354; i++)
-                {
-                    shop.item[nextSlot].SetDefaults(i);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 5);
-                    nextSlot++;
-                }
-
-                shop.item[nextSlot].SetDefaults(ItemID.KryptonMoss);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.XenonMoss);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ArgonMoss);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
-                nextSlot++;
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.HallowedSeeds);
-                    nextSlot++;
-                }
+                plantShop.Add(new Item(i) { shopCustomPrice = Item.buyPrice(copper: 5) });
             }
-            else
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.Bird);
-                nextSlot++;
+            plantShop.Add(new Item(ItemID.KryptonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.XenonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.ArgonMoss) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(ItemID.HallowedSeeds, Condition.Hardmode);
 
-                
+            plantShop.Register();
 
-                shop.item[nextSlot].SetDefaults(ItemID.BlueJay);
-                nextSlot++;
-
-                
-
-                shop.item[nextSlot].SetDefaults(ItemID.Bunny);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Cardinal);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Duck);
-                nextSlot++;
-
-                
-
-                shop.item[nextSlot].SetDefaults(ItemID.Frog);
-                nextSlot++;
-
-                
-
-                shop.item[nextSlot].SetDefaults(ItemID.Goldfish);
-                nextSlot++;
-
-                
-
-                shop.item[nextSlot].SetDefaults(ItemID.MallardDuck);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.FairyCritterBlue);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.FairyCritterGreen);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.FairyCritterPink);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Grebe);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Mouse);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Owl);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Penguin);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Pupfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Rat);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Seagull); // eren
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Seahorse);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Squirrel);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.SquirrelRed);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Turtle);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.TurtleJungle);
-                nextSlot++;
-
-                if (NPC.downedPlantBoss)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.EmpressButterfly);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 25);
-                    nextSlot++;
-                }
-
-            }
+            var critterShop = new NPCShop(Type, "Critters")
+                .Add(ItemID.Bird)
+                .Add(ItemID.BlueJay)
+                .Add(ItemID.Bunny)
+                .Add(ItemID.Cardinal)
+                .Add(ItemID.Duck)
+                .Add(ItemID.Frog)
+                .Add(ItemID.Goldfish)
+                .Add(ItemID.MallardDuck)
+                .Add(ItemID.FairyCritterBlue)
+                .Add(ItemID.FairyCritterGreen)
+                .Add(ItemID.FairyCritterPink)
+                .Add(ItemID.Grebe)
+                .Add(ItemID.Mouse)
+                .Add(ItemID.Owl)
+                .Add(ItemID.Penguin)
+                .Add(ItemID.Pupfish)
+                .Add(ItemID.Rat)
+                .Add(ItemID.Seagull)
+                .Add(ItemID.Seahorse)
+                .Add(ItemID.Squirrel)
+                .Add(ItemID.SquirrelRed)
+                .Add(ItemID.Turtle)
+                .Add(ItemID.TurtleJungle)
+                .Add(new Item(ItemID.EmpressButterfly) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedEmpressOfLight);
+            critterShop.Register();
         }
+
+        //public override void ModifyActiveShop(string shopName, Item[] items)
+        //{
+        //    if (Plants)
+        //    {
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ClayPot);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Cobweb);
+        //        shop.item[nextSlot].shopCustomPrice = 10;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Coral);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Seashell);
+        //        shop.item[nextSlot].shopCustomPrice = 100;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Starfish);
+        //        shop.item[nextSlot].shopCustomPrice = 100;
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Mushroom);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GrassSeeds);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.VileMushroom);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.CorruptSeeds);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ViciousMushroom);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.CrimsonSeeds);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Blinkroot);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Daybloom);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.DaybloomSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Deathweed);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.DeathweedSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Fireblossom);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.FireblossomSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Moonglow);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.MoonglowSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Shiverthorn);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.ShiverthornSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Waterleaf);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.WaterleafSeeds);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Pumpkin);
+        //        nextSlot++;
+
+        //        //shop.item[nextSlot].SetDefaults(ItemID.PumpkinSeed);
+        //        //nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.JungleSpores);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.JungleGrassSeeds);
+        //        nextSlot++;
+
+        //        for (int i = 4349; i <= 4354; i++)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(i);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 5);
+        //            nextSlot++;
+        //        }
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.KryptonMoss);
+        //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.XenonMoss);
+        //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ArgonMoss);
+        //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(copper: 10);
+        //        nextSlot++;
+
+        //        if (Main.hardMode)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.HallowedSeeds);
+        //            nextSlot++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ItemID.Bird);
+        //        nextSlot++;
+
+
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.BlueJay);
+        //        nextSlot++;
+
+
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Bunny);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Cardinal);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Duck);
+        //        nextSlot++;
+
+
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Frog);
+        //        nextSlot++;
+
+
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Goldfish);
+        //        nextSlot++;
+
+
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.MallardDuck);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.FairyCritterBlue);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.FairyCritterGreen);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.FairyCritterPink);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Grebe);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Mouse);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Owl);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Penguin);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Pupfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Rat);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Seagull); // eren
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Seahorse);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Squirrel);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.SquirrelRed);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Turtle);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.TurtleJungle);
+        //        nextSlot++;
+
+        //        if (NPC.downedPlantBoss)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.EmpressButterfly);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 25);
+        //            nextSlot++;
+        //        }
+
+        //    }
+        //}
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {

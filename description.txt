@@ -1,10 +1,10 @@
 Helpful NPCs is a mod that adds five new NPCs that sell items that are usually boring to get.
 
 NPCs:
-- Miner (Sells bars and gems. Spawns after defeating the EoC.)
-- Hunter (Sells monster drops/soul/essence related items and ammo. Spawns after defeating EoC.)
-- Fisherman (Sells bait, normal fish, and quest fish. Spawns if there is an angler.)
-- Environmentalist (Sells herbs, seeds, and critters. Spawns after defeating the Queen Bee)
-- Chester (Sells a random item that can normally be found as chest loot. Spawns randomly in the world)
+- Miner: Sells bars and gems; Requires a Glimmering Stone crafted from one stone block and gold coins
+- Hunter: Sells monster drops/soul/essence related items and ammo; Requires a Glistening Gel crafted from one gel and gold coins
+- Fisherman: Sells bait, normal fish, and quest fish; Requires a Radiant Fish crafted from one bass and gold coins
+- Environmentalist: Sells herbs, seeds, and critters; Requires a Dazzling Flower crafted from one daybloom and gold coins
+- Chester: Sells a random item that can normally be found as chest loot; Spawns randomly in the world; Not in the current version!
 
-NPC sprites and icon were made by the talented Lonely Star#6056 (Big thanks)
+NPC sprites and icon were made by the talented Lonely Star#6056 (Big thanks!)

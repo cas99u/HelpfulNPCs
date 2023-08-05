@@ -1,67 +1,149 @@
-﻿Mods: {
+Mods: {
 	HelpfulNPCs: {
-		TownNPCMood: {
+		Items: {
+			FishCrate: {
+				DisplayName: Fish Crate
+				Tooltip: Right click to receive the current quest fish
+			}
+
+			DazzlingFlower: {
+				DisplayName: Dazzling Flower
+				Tooltip: Keep inside inventory to allow the Environmentalist to move in.
+			}
+
+			GlimmeringStone: {
+				DisplayName: Glimmering Stone
+				Tooltip: Keep inside inventory to allow the Miner to move in.
+			}
+
+			GlisteningGel: {
+				DisplayName: Glistening Gel
+				Tooltip: Keep inside inventory to allow the Hunter to move in.
+			}
+
+			RadiantFish: {
+				DisplayName: Radiant Fish
+				Tooltip: Keep inside inventory to allow the Fisherman to move in.
+			}
+		}
+
+		NPCs: {
 			EnvironmentalistNPC: {
-				Content: "I am enjoying nature right now."
-				NoHome: "As much as I love nature, I also need shelter."
-				LoveSpace: "There is plenty of space here for my plants."
-				FarFromHome: "I need to get home to continue my research."
-				DislikeCrowded: "I can't focus on my research here."
-				HateCrowded: "People keep bumping into my plants!"
-				LikeBiome: "I like {BiomeName}. It always puts me at peace."
-				DislikeBiome: "There is barely any flora in {BiomeName}."
-				LikeNPC: "{NPCName} understands my passion for nature."
-				LoveNPC: "{NPCName} is nature incarnate!"
-				DislikeNPC: "{NPCName} prioritizes his profits over the environment!"
-				HateNPC: "{NPCName} destroys everything I try to conserve!"
-				LikeNPC_Princess: "{NPCName} always encourages me on my efforts."
+				DisplayName: Environmentalist
+
+				TownNPCMood: {
+					Content: I am enjoying nature right now.
+					NoHome: As much as I love nature, I also need shelter.
+					LoveSpace: There is plenty of space here for my plants.
+					FarFromHome: I need to get home to continue my research.
+					DislikeCrowded: I can't focus on my research here.
+					HateCrowded: People keep bumping into my plants!
+					LikeBiome: I like {BiomeName}. It always puts me at peace.
+					DislikeBiome: There is barely any flora in {BiomeName}.
+					LikeNPC: "{NPCName} understands my passion for nature."
+					LoveNPC: "{NPCName} is nature incarnate!"
+					DislikeNPC: "{NPCName} prioritizes his profits over the environment!"
+					HateNPC: "{NPCName} destroys everything I try to conserve!"
+					LikeNPC_Princess: "{NPCName} always encourages me on my efforts."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/EnvironmentalistNPC}"
+				}
 			}
 
 			FishermanNPC: {
-				Content: "*Snooze*"
-				NoHome: "I need a place to fish!"
-				LoveSpace: "I love it here. Just me and my fishing rod."
-				FarFromHome: "I need to get back to fishing."
-				DislikeCrowded: "People keep bumping into me while fishing."
-				HateCrowded: "There's not enough room to cast a line!"
-				LikeBiome: "There are so many fish in the sea!"
-				DislikeBiome: "There's no fish in {BiomeName}!"
-				LikeNPC: "{NPCName} is a good pal of mine."
-				LoveNPC: "{NPCName} is such a good kid."
-				DislikeNPC: "{NPCName} tried to upgrade my fishing rod and it blew up."
-				LikeNPC_Princess: "I don't mind having {NPCName} around while I'm fishing."
+				DisplayName: Fisherman
+
+				TownNPCMood: {
+					Content: *Snooze*
+					NoHome: I need a place to fish!
+					LoveSpace: I love it here. Just me and my fishing rod.
+					FarFromHome: I need to get back to fishing.
+					DislikeCrowded: People keep bumping into me while fishing.
+					HateCrowded: There's not enough room to cast a line!
+					LikeBiome: There are so many fish in the sea!
+					DislikeBiome: There's no fish in {BiomeName}!
+					LikeNPC: "{NPCName} is a good pal of mine."
+					LoveNPC: "{NPCName} is such a good kid."
+					DislikeNPC: "{NPCName} tried to upgrade my fishing rod and it blew up."
+					LikeNPC_Princess: I don't mind having {NPCName} around while I'm fishing.
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/FishermanNPC}"
+				}
 			}
 
 			HunterNPC: {
-				Content: "I'm chillin."
-				NoHome: "I need a place to put my gear."
-				LoveSpace: "I enjoy the peace and quiet here."
-				FarFromHome: "I have strayed too far from home."
-				DislikeCrowded: "I can't focus here."
-				HateCrowded: "People keep knocking my stuff over!"
-				LikeBiome: "I enjoy the cold in {BiomeName}."
-				DislikeBiome: "I don't have any equipment for {BiomeName}."
-				LikeNPC: "{NPCName}'s venom is very useful."
-				LoveNPC: "{NPCName} and I go way back."
-				DislikeNPC: "{NPCName} is too loud."
-				LikeNPC_Princess: "{NPCName} always knows when to give me space so I can focus."
+				DisplayName: Hunter
+
+				TownNPCMood: {
+					Content: I'm chillin.
+					NoHome: I need a place to put my gear.
+					LoveSpace: I enjoy the peace and quiet here.
+					FarFromHome: I have strayed too far from home.
+					DislikeCrowded: I can't focus here.
+					HateCrowded: People keep knocking my stuff over!
+					LikeBiome: I enjoy the cold in {BiomeName}.
+					DislikeBiome: I don't have any equipment for {BiomeName}.
+					LikeNPC: "{NPCName}'s venom is very useful."
+					LoveNPC: "{NPCName} and I go way back."
+					DislikeNPC: "{NPCName} is too loud."
+					LikeNPC_Princess: "{NPCName} always knows when to give me space so I can focus."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/HunterNPC}"
+				}
 			}
 
 			MinerNPC: {
-				Content: "This brings me back to the good ol' days."
-				NoHome: "Where am I supposed to rest?"
-				LoveSpace: "There is plenty of space for all my tools."
-				FarFromHome: "I appear to have dug too far."
-				DislikeCrowded: "I keep bumping into people"
-				HateCrowded: "It's so crowded I can't even leave!"
-				LikeBiome: "There are so many ores here to mine."
-				DislikeBiome: "How am I supposed to mine here?"
-				LikeNPC: "{NPCName} is a bit wierd but he's made some useful gadgets for me."
-				LoveNPC: "{NPCName} and I are having a great time together!"
-				DislikeNPC: "{NPCName} keeps trying to trim my beard."
-				LikeNPC_Princess: "{NPCName} helps me get cleaned up after a long mining session."
+				DisplayName: Miner
+
+				TownNPCMood: {
+					Content: This brings me back to the good ol' days.
+					NoHome: Where am I supposed to rest?
+					LoveSpace: There is plenty of space for all my tools.
+					FarFromHome: I appear to have dug too far.
+					DislikeCrowded: I keep bumping into people
+					HateCrowded: It's so crowded I can't even leave!
+					LikeBiome: There are so many ores here to mine.
+					DislikeBiome: How am I supposed to mine here?
+					LikeNPC: "{NPCName} is a bit wierd but he's made some useful gadgets for me."
+					LoveNPC: "{NPCName} and I are having a great time together!"
+					DislikeNPC: "{NPCName} keeps trying to trim my beard."
+					LikeNPC_Princess: "{NPCName} helps me get cleaned up after a long mining session."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/MinerNPC}"
+				}
+			}
+
+			Chester.DisplayName: Chester
+		}
+
+		Configs: {
+			Config: {
+				DisplayName: Config
+
+				MinerCanSpawn: {
+					Label: Miner Can Spawn
+					Tooltip: ""
+				}
+
+				FishermanCanSpawn: {
+					Label: Fisherman Can Spawn
+					Tooltip: ""
+				}
+
+				HunterCanSpawn: {
+					Label: Hunter Can Spawn
+					Tooltip: ""
+				}
+
+				EnvironmentalistCanSpawn: {
+					Label: Environmentalist Can Spawn
+					Tooltip: ""
+				}
+
+				ChesterCanSpawn: {
+					Label: Chester Can Spawn
+					Tooltip: ""
+				}
 			}
 		}
+
+		Conditions.DownedSkeletronOrQueenBee: Mods.HelpfulNPCs.Conditions.DownedSkeletronOrQueenBee
 	}
 }
 

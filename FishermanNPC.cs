@@ -15,7 +15,6 @@ namespace HelpfulNPCs
     [AutoloadHead]
     public class FishermanNPC : ModNPC
     {
-        public static bool fish = false;
 
         public override string Texture
         {
@@ -28,7 +27,6 @@ namespace HelpfulNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fisherman");
             Main.npcFrameCount[NPC.type] = 25;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
             NPCID.Sets.DangerDetectRange[NPC.type] = 150;
@@ -84,13 +82,25 @@ namespace HelpfulNPCs
 
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
-            if (NPC.npcsFoundForCheckActive[NPCID.Angler] && HelpfulNPCs.config.FishermanCanSpawn)
+            for (int k = 0; k < Main.maxPlayers; k++)
             {
-                return true;
+                Player player = Main.player[k];
+                if (!player.active)
+                {
+                    continue;
+                }
+
+
+                if (player.inventory.Any(item => item.type == ModContent.ItemType<Items.RadiantFish>()))
+                {
+                    return true;
+                }
             }
+
             return false;
+
         }
 
         public override List<string> SetNPCNameList()
@@ -122,239 +132,323 @@ namespace HelpfulNPCs
             button2 = "Bait";
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
-            fish = firstButton;
-            shop = true;
-
-        }
-
-        public override void SetupShop(Chest shop, ref int nextSlot)
-        {
-            if (fish)
+            if (firstButton)
             {
-                shop.item[nextSlot].SetDefaults(ModContent.ItemType<FishCrate>());
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ArmoredCavefish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.AtlanticCod);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Bass);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ChaosFish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.CrimsonTigerfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Damselfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.DoubleCod);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Ebonkoi);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.FlarefinKoi);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Flounder);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.FrostMinnow);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GoldenCarp);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Hemopiranha);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Honeyfin);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.NeonTetra);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Obsidifish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.RedSnapper);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.RockLobster);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Salmon);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Shrimp);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.SpecularFish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Stinkfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Trout);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Tuna);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.VariegatedLardfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Oyster);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 3);
-                nextSlot++;
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.PrincessFish);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Prismite);
-                    nextSlot++;
-                }
-
-                
+                shop = "Fish";
             }
-
             else
             {
-                shop.item[nextSlot].SetDefaults(ItemID.ApprenticeBait);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.JourneymanBait);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.MasterBait);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ChumBucket);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.BlackScorpion);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Buggy);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.HellButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.JuliaButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.MonarchButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.PurpleEmperorButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.RedAdmiralButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.SulphurButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.TreeNymphButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.UlyssesButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.ZebraSwallowtailButterfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.BlackDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.BlueDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GreenDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.OrangeDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.RedDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.YellowDragonfly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Firefly);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GlowingSnail);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Grasshopper);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Grubby);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.BlueJellyfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.GreenJellyfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.PinkJellyfish);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.LadyBug);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Lavafly);
-                nextSlot++;
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.LightningBug);
-                    nextSlot++;
-                }
-
-                shop.item[nextSlot].SetDefaults(ItemID.Maggot);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Scorpion);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Sluggy);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Snail);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.WaterStrider);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Worm);
-                nextSlot++;
-
-                if (NPC.downedGolemBoss || NPC.downedFishron)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 25);
-                    nextSlot++;
-                }
+                shop = "Bait";
             }
-        }
-            
 
-        
+        }
+
+        public override void AddShops()
+        {
+            var fishShop = new NPCShop(Type, "Fish")
+                .Add(new Item(ModContent.ItemType<Items.FishCrate>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(ItemID.ArmoredCavefish)
+                .Add(ItemID.AtlanticCod)
+                .Add(ItemID.Bass)
+                .Add(ItemID.ChaosFish)
+                .Add(ItemID.CrimsonTigerfish)
+                .Add(ItemID.Damselfish)
+                .Add(ItemID.DoubleCod)
+                .Add(ItemID.Ebonkoi)
+                .Add(ItemID.FlarefinKoi)
+                .Add(ItemID.Flounder)
+                .Add(ItemID.FrostMinnow)
+                .Add(ItemID.GoldenCarp)
+                .Add(ItemID.Hemopiranha)
+                .Add(ItemID.Honeyfin)
+                .Add(ItemID.NeonTetra)
+                .Add(ItemID.Obsidifish)
+                .Add(ItemID.RedSnapper)
+                .Add(ItemID.RockLobster)
+                .Add(ItemID.Salmon)
+                .Add(ItemID.Shrimp)
+                .Add(ItemID.SpecularFish)
+                .Add(ItemID.Stinkfish)
+                .Add(ItemID.Trout)
+                .Add(ItemID.Tuna)
+                .Add(ItemID.VariegatedLardfish)
+                .Add(new Item(ItemID.Oyster) { shopCustomPrice = Item.buyPrice(gold: 3) })
+                .Add(ItemID.PrincessFish, Condition.Hardmode)
+                .Add(ItemID.Prismite, Condition.Hardmode);
+
+            fishShop.Register();
+
+            var baitShop = new NPCShop(Type, "Bait")
+                .Add(ItemID.ApprenticeBait)
+                .Add(ItemID.JourneymanBait)
+                .Add(ItemID.MasterBait)
+                .Add(ItemID.ChumBucket)
+                .Add(ItemID.BlackScorpion)
+                .Add(ItemID.Buggy)
+                .Add(ItemID.HellButterfly)
+                .Add(ItemID.JuliaButterfly)
+                .Add(ItemID.MonarchButterfly)
+                .Add(ItemID.PurpleEmperorButterfly)
+                .Add(ItemID.RedAdmiralButterfly)
+                .Add(ItemID.SulphurButterfly)
+                .Add(ItemID.TreeNymphButterfly)
+                .Add(ItemID.UlyssesButterfly)
+                .Add(ItemID.ZebraSwallowtailButterfly)
+                .Add(ItemID.BlackDragonfly)
+                .Add(ItemID.BlueDragonfly)
+                .Add(ItemID.GreenDragonfly)
+                .Add(ItemID.OrangeDragonfly)
+                .Add(ItemID.RedDragonfly)
+                .Add(ItemID.YellowDragonfly)
+                .Add(ItemID.Firefly)
+                .Add(ItemID.GlowingSnail)
+                .Add(ItemID.Grasshopper)
+                .Add(ItemID.Grubby)
+                .Add(ItemID.BlueJellyfish)
+                .Add(ItemID.GreenJellyfish)
+                .Add(ItemID.PinkJellyfish)
+                .Add(ItemID.LadyBug)
+                .Add(ItemID.Lavafly)
+                .Add(ItemID.LightningBug, Condition.Hardmode)
+                .Add(ItemID.Maggot)
+                .Add(ItemID.Scorpion)
+                .Add(ItemID.Sluggy)
+                .Add(ItemID.Snail)
+                .Add(ItemID.WaterStrider)
+                .Add(ItemID.Worm)
+                .Add(new Item(ItemID.TruffleWorm) { shopCustomPrice = Item.buyPrice(gold: 25) });
+
+            baitShop.Register();
+        }
+
+        //public override void ModifyActiveShop(string shopName, Item[] items)
+        //{
+        //    if (fish)
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ModContent.ItemType<FishCrate>());
+        //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ArmoredCavefish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.AtlanticCod);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Bass);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ChaosFish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.CrimsonTigerfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Damselfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.DoubleCod);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Ebonkoi);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.FlarefinKoi);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Flounder);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.FrostMinnow);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GoldenCarp);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Hemopiranha);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Honeyfin);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.NeonTetra);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Obsidifish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.RedSnapper);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.RockLobster);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Salmon);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Shrimp);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.SpecularFish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Stinkfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Trout);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Tuna);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.VariegatedLardfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Oyster);
+        //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 3);
+        //        nextSlot++;
+
+        //        if (Main.hardMode)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.PrincessFish);
+        //            nextSlot++;
+
+        //            shop.item[nextSlot].SetDefaults(ItemID.Prismite);
+        //            nextSlot++;
+        //        }
+
+
+        //    }
+
+        //    else
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ItemID.ApprenticeBait);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.JourneymanBait);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.MasterBait);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ChumBucket);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.BlackScorpion);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Buggy);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.HellButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.JuliaButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.MonarchButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.PurpleEmperorButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.RedAdmiralButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.SulphurButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.TreeNymphButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.UlyssesButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.ZebraSwallowtailButterfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.BlackDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.BlueDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GreenDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.OrangeDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.RedDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.YellowDragonfly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Firefly);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GlowingSnail);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Grasshopper);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Grubby);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.BlueJellyfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.GreenJellyfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.PinkJellyfish);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.LadyBug);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Lavafly);
+        //        nextSlot++;
+
+        //        if (Main.hardMode)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.LightningBug);
+        //            nextSlot++;
+        //        }
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Maggot);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Scorpion);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Sluggy);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Snail);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.WaterStrider);
+        //        nextSlot++;
+
+        //        shop.item[nextSlot].SetDefaults(ItemID.Worm);
+        //        nextSlot++;
+
+        //        if (NPC.downedGolemBoss || NPC.downedFishron)
+        //        {
+        //            shop.item[nextSlot].SetDefaults(ItemID.TruffleWorm);
+        //            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 25);
+        //            nextSlot++;
+        //        }
+        //    }
+        //}
+
+
+
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
@@ -368,10 +462,10 @@ namespace HelpfulNPCs
             randExtraCooldown = 25;
         }
 
-        public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
+        public override void DrawTownAttackSwing(ref Texture2D item, ref Rectangle itemFrame, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
             item = ModContent.Request<Texture2D>("Terraria/Images/Item_" + ItemID.Rockfish).Value; //this defines the item that this npc will use
-            
+
             itemSize = 42;
         }
 
