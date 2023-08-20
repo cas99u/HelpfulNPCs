@@ -8,6 +8,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -117,13 +118,13 @@ namespace HelpfulNPCs
             switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "Quiet, I need to focus.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.StandardDialogue1");
                 case 1:
-                    return "I have slain many monsters.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.StandardDialogue2");
                 case 2:
-                    return "Yes, I am Hunter the Hunter.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.StandardDialogue3");
                 default:
-                    return "You should be glad that I'm not hunting you.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.StandardDialogue4");
             }
         }
 
@@ -132,22 +133,22 @@ namespace HelpfulNPCs
 
             if (shopChoice == 0)
             {
-                button = "Monster Drops";
+                button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.ChatOption1");
             }
             else if (shopChoice == 1)
             {
-                button = "Souls/Essences";
+                button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.ChatOption2");
             }
             else if (shopChoice == 2)
             {
-                button = "Ammunition";
+                button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.ChatOption3");
             }
             else
             {
                 shopChoice = 0;
             }
 
-            button2 = "Change Shop";
+            button2 = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.HunterNPC.ChatOption4");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

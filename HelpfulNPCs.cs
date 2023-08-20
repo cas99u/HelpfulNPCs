@@ -24,16 +24,7 @@ namespace HelpfulNPCs
 
         public override void PostSetupContent()
         {
-            if (ModLoader.TryGetMod("Census", out Mod censusMod))
-            {
-                // https://github.com/JavidPack/Census/blob/dcf974cd38ee4701dde52ef1a48b1bdb475f0417/Census.cs#L502
-                void AddNPC<T>(string condition) where T : ModNPC => censusMod.Call("TownNPCCondition", ModContent.NPCType<T>(), condition);
-
-                AddNPC<EnvironmentalistNPC>("When Queen Bee has been defeated");
-                AddNPC<FishermanNPC>("When the Angler is alive");
-                AddNPC<HunterNPC>("When the Eye of Cthulhu has been defeated");
-                AddNPC<MinerNPC>("When the Eye of Cthulhu has been defeated");
-            }
+            
 
             if (ModLoader.TryGetMod("DialogueTweak", out Mod dialogueTweakMod))
             {

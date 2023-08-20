@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -116,23 +117,23 @@ namespace HelpfulNPCs
 
         public override string GetChat()
         {
-            switch (Main.rand.Next(3))
+            switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "Hey! Don't step on my plants!";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.StandardDialogue1");
                 case 1:
-                    return "There's no such thing as magic beanstalks.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.StandardDialogue2");
                 case 2:
-                    return "My research on Terrarian critters is almost complete.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.StandardDialogue3");
                 default:
-                    return "Growing plants takes hardwork and dedication.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.StandardDialogue4");
             }
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Plants";
-            button2 = "Critters";
+            button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.ChatOption1");
+            button2 = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.EnvironmentalistNPC.ChatOption2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

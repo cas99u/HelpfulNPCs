@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -116,21 +117,23 @@ namespace HelpfulNPCs
 
         public override string GetChat()
         {
-            switch (Main.rand.Next(3))
+            switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "I love being down in the mines.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.StandardDialogue1");
                 case 1:
-                    return "I have no use for these shiny gems and ore, want to buy them off me?";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.StandardDialogue2");
+                case 2:
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.StandardDialogue3");
                 default:
-                    return "What do you mean I should mine at Y level 11?";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.StandardDialogue4");
             }
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Bars & More";
-            button2 = "Gems";
+            button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.ChatOption1");
+            button2 = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.MinerNPC.ChatOption2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

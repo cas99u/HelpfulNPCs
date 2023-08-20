@@ -47,6 +47,8 @@ Mods: {
 					LikeNPC_Princess: "{NPCName} always encourages me on my efforts."
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/EnvironmentalistNPC}"
 				}
+
+				Census.SpawnCondition: Have a {$Items.DazzlingFlower.DisplayName} [i:HelpfulNPCs/DazzlingFlower] in your inventory
 			}
 
 			FishermanNPC: {
@@ -67,6 +69,8 @@ Mods: {
 					LikeNPC_Princess: I don't mind having {NPCName} around while I'm fishing.
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/FishermanNPC}"
 				}
+
+				Census.SpawnCondition: Have a {$Items.RadiantFish.DisplayName} [i:HelpfulNPCs/RadiantFish] in your inventory
 			}
 
 			HunterNPC: {
@@ -87,6 +91,8 @@ Mods: {
 					LikeNPC_Princess: "{NPCName} always knows when to give me space so I can focus."
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/HunterNPC}"
 				}
+
+				Census.SpawnCondition: Have a {$Items.GlisteningGel.DisplayName} [i:HelpfulNPCs/GlisteningGel] in your inventory
 			}
 
 			MinerNPC: {
@@ -107,39 +113,50 @@ Mods: {
 					LikeNPC_Princess: "{NPCName} helps me get cleaned up after a long mining session."
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/MinerNPC}"
 				}
+
+				Census.SpawnCondition: Have a {$Items.GlimmeringStone.DisplayName} [i:HelpfulNPCs/GlimmeringStone] in your inventory
 			}
 
 			Chester.DisplayName: Chester
 		}
 
-		Configs: {
-			Config: {
-				DisplayName: Config
+		Dialogue: {
+			EnvironmentalistNPC: {
+				StandardDialogue1: Hey! Don't step on my plants!
+				StandardDialogue2: There's no such thing as magic beanstalks.
+				StandardDialogue3: My research on Terrarian critters is almost complete.
+				StandardDialogue4: Growing plants takes hardwork and dedication.
+				ChatOption1: Plants
+				ChatOption2: Critters
+			}
 
-				MinerCanSpawn: {
-					Label: Miner Can Spawn
-					Tooltip: ""
-				}
+			FishermanNPC: {
+				StandardDialogue1: Give a man a fish, and you feed him for a day. Teach a man to fish, and he'll break the game's progression.
+				StandardDialogue2: *Snore*
+				StandardDialogue3: How come sometimes I fish up junk? Who's been throwing things in the water?
+				StandardDialogue4: Back in my day, even wooden crates would have titanium in them!
+				ChatOption1: Fish
+				ChatOption2: Bait
+			}
 
-				FishermanCanSpawn: {
-					Label: Fisherman Can Spawn
-					Tooltip: ""
-				}
+			HunterNPC: {
+				StandardDialogue1: Quiet, I need to focus.
+				StandardDialogue2: ...
+				StandardDialogue3: Yes, I am Hunter the Hunter.
+				StandardDialogue4: You should be glad that I'm not hunting you.
+				ChatOption1: Monster Drops
+				ChatOption2: Souls/Essences
+				ChatOption3: Ammunition
+				ChatOption4: Change Shop
+			}
 
-				HunterCanSpawn: {
-					Label: Hunter Can Spawn
-					Tooltip: ""
-				}
-
-				EnvironmentalistCanSpawn: {
-					Label: Environmentalist Can Spawn
-					Tooltip: ""
-				}
-
-				ChesterCanSpawn: {
-					Label: Chester Can Spawn
-					Tooltip: ""
-				}
+			MinerNPC: {
+				StandardDialogue1: There's nothing like a good beer after coming back to the surface!
+				StandardDialogue2: I have no use for these shiny gems and ore, want to buy them off me?
+				StandardDialogue3: What do you mean I shouldn't mine at Y level 11?
+				StandardDialogue4: Diamonds? I'm no expert, but I don't think you can make a sword out of them.
+				ChatOption1: Valuables
+				ChatOption2: Blocks
 			}
 		}
 

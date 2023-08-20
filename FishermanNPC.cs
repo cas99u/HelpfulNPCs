@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -115,21 +116,23 @@ namespace HelpfulNPCs
 
         public override string GetChat()
         {
-            switch (Main.rand.Next(3))
+            switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "Give a man a fish, and you feed him for a day. Teach a man to fish, and you feed him for a lifetime.";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.StandardDialogue1");
                 case 1:
-                    return "*Snore*";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.StandardDialogue2");
+                case 2:
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.StandardDialogue3");
                 default:
-                    return "How come sometimes I fish up junk? Who's been throwing things in the water?";
+                    return Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.StandardDialogue4");
             }
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Fish";
-            button2 = "Bait";
+            button = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.ChatOption1");
+            button2 = Language.GetTextValue("Mods.HelpfulNPCs.Dialogue.FishermanNPC.ChatOption2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

@@ -1,0 +1,172 @@
+Mods: {
+	HelpfulNPCs: {
+		Items: {
+			FishCrate: {
+				DisplayName: Рыбная корзинка
+				Tooltip: Нажмите правой кнопкой мыши, чтобы получить текущую квестовую рыбу
+			}
+
+			DazzlingFlower: {
+				DisplayName: Ослепительный цветок
+				Tooltip: Держите в инвентаре, чтобы позволить Экологу заселиться.
+			}
+
+			GlimmeringStone: {
+				DisplayName: Сверкающий камень
+				Tooltip: Держите в инвентаре, чтобы позволить Шахтеру заселиться.
+			}
+
+			GlisteningGel: {
+				DisplayName: Сияющий гель
+				Tooltip: Держите в инвентаре, чтобы позволить Охотнику заселиться.
+			}
+
+			RadiantFish: {
+				DisplayName: Сияющая рыба
+				Tooltip: Держите в инвентаре, чтобы позволить Рыболову заселиться.
+			}
+		}
+
+		NPCs: {
+			EnvironmentalistNPC: {
+				DisplayName: Эколог
+
+				TownNPCMood: {
+					Content: Я наслаждаюсь природой прямо сейчас.
+					NoHome: Несмотря на то, что я люблю природу, мне также нужно укрытие.
+					LoveSpace: Здесь достаточно места для моих растений.
+					FarFromHome: Мне нужно вернуться домой, чтобы продолжить исследования.
+					DislikeCrowded: Я не могу сосредоточиться на своих исследованиях здесь.
+					HateCrowded: Люди все время задевают мои растения!
+					LikeBiome: Мне нравится {BiomeName}. Оно всегда успокаивает меня.
+					DislikeBiome: В {BiomeName} почти нет растительности.
+					LikeNPC: "{NPCName} понимает мою страсть к природе."
+					LoveNPC: "{NPCName} - воплощение природы!"
+					DislikeNPC: "{NPCName} ставит свои прибыли выше охраны окружающей среды!"
+					HateNPC: "{NPCName} разрушает все, что я пытаюсь сохранить!"
+					LikeNPC_Princess: "{NPCName} всегда поддерживает меня в моих усилиях."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/EnvironmentalistNPC}"
+				}
+
+				// Census.SpawnCondition: Have a {$Items.DazzlingFlower.DisplayName} [i:HelpfulNPCs/DazzlingFlower] in your inventory
+			}
+
+			FishermanNPC: {
+				DisplayName: Рыболов
+
+				TownNPCMood: {
+					Content: *Храпит*
+					NoHome: Мне нужно место для рыбной ловли!
+					LoveSpace: Мне нравится здесь. Тут только я и моя удочка.
+					FarFromHome: Мне нужно вернуться к рыбной ловле.
+					DislikeCrowded: Люди постоянно натыкаются меня во время рыбной ловли.
+					HateCrowded: Тут недостаточно места для заброса удочки!
+					LikeBiome: В море так много рыбы!
+					DislikeBiome: В {BiomeName} совсем нет рыбы!
+					LikeNPC: "{NPCName} - мой хороший приятель."
+					LoveNPC: "{NPCName} - такой хороший паренёк."
+					DislikeNPC: "{NPCName} попыталась улучшить мою удочку, но она просто она взорвалась!"
+					LikeNPC_Princess: Я не против того, чтобы {NPCName} была рядом, пока я ловлю рыбу.
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/FishermanNPC}"
+				}
+
+				// Census.SpawnCondition: Have a {$Items.RadiantFish.DisplayName} [i:HelpfulNPCs/RadiantFish] in your inventory
+			}
+
+			HunterNPC: {
+				DisplayName: Охотник
+
+				TownNPCMood: {
+					Content: Я расслабляюсь.
+					NoHome: Мне нужно место, где я могу разместить свое снаряжение.
+					LoveSpace: Я наслаждаюсь тишиной и покоем здесь.
+					FarFromHome: Я слишком далеко ушел от дома.
+					DislikeCrowded: Я не могу сосредоточиться здесь.
+					HateCrowded: Люди все время опрокидывают мои вещи!
+					LikeBiome: Мне нравится холод в {BiomeName}.
+					DislikeBiome: У меня нет снаряжения для {BiomeName}.
+					LikeNPC: Яд {NPCName} очень полезен.
+					LoveNPC: Мы с {NPCName} давно знакомы.
+					DislikeNPC: "{NPCName} слишком громкий."
+					LikeNPC_Princess: "{NPCName} всегда знает, когда мне нужно дать свободное пространство, чтобы я мог сосредоточиться."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/HunterNPC}"
+				}
+
+				// Census.SpawnCondition: Have a {$Items.GlisteningGel.DisplayName} [i:HelpfulNPCs/GlisteningGel] in your inventory
+			}
+
+			MinerNPC: {
+				DisplayName: Шахтер
+
+				TownNPCMood: {
+					Content: Это возвращает меня в старые добрые времена.
+					NoHome: Где я могу отдыхать?
+					LoveSpace: Здесь много места для всех моих инструментов.
+					FarFromHome: Кажется, я забрался слишком далеко.
+					DislikeCrowded: Я постоянно сталкиваюсь с людьми.
+					HateCrowded: Тут ак много народа, что я даже не могу выйти!
+					LikeBiome: Здесь так много руд для добычи.
+					DislikeBiome: Как я должен здесь добывать руду?
+					LikeNPC: "{NPCName} немного странный, но он сделал для меня полезные гаджеты."
+					LoveNPC: "{NPCName} и я прекрасно проводим время вместе!"
+					DislikeNPC: "{NPCName} постоянно пытается подравнять мою бороду."
+					LikeNPC_Princess: "{NPCName} помогает мне привести себя в порядок после долгой работы в шахте."
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/MinerNPC}"
+				}
+
+				// Census.SpawnCondition: Have a {$Items.GlimmeringStone.DisplayName} [i:HelpfulNPCs/GlimmeringStone] in your inventory
+			}
+
+			Chester.DisplayName: Честер
+		}
+
+		Dialogue: {
+			EnvironmentalistNPC: {
+				// StandardDialogue1: Hey! Don't step on my plants!
+				// StandardDialogue2: There's no such thing as magic beanstalks.
+				// StandardDialogue3: My research on Terrarian critters is almost complete.
+				// StandardDialogue4: Growing plants takes hardwork and dedication.
+				// ChatOption1: Plants
+				// ChatOption2: Critters
+			}
+
+			FishermanNPC: {
+				// StandardDialogue1: Give a man a fish, and you feed him for a day. Teach a man to fish, and he'll break the game's progression.
+				// StandardDialogue2: *Snore*
+				// StandardDialogue3: How come sometimes I fish up junk? Who's been throwing things in the water?
+				// StandardDialogue4: Back in my day, even wooden crates would have titanium in them!
+				// ChatOption1: Fish
+				// ChatOption2: Bait
+			}
+
+			HunterNPC: {
+				// StandardDialogue1: Quiet, I need to focus.
+				// StandardDialogue2: ...
+				// StandardDialogue3: Yes, I am Hunter the Hunter.
+				// StandardDialogue4: You should be glad that I'm not hunting you.
+				// ChatOption1: Monster Drops
+				// ChatOption2: Souls/Essences
+				// ChatOption3: Ammunition
+				// ChatOption4: Change Shop
+			}
+
+			MinerNPC: {
+				// StandardDialogue1: There's nothing like a good beer after coming back to the surface!
+				// StandardDialogue2: I have no use for these shiny gems and ore, want to buy them off me?
+				// StandardDialogue3: What do you mean I shouldn't mine at Y level 11?
+				// StandardDialogue4: Diamonds? I'm no expert, but I don't think you can make a sword out of them.
+				// ChatOption1: Valuables
+				// ChatOption2: Blocks
+			}
+		}
+
+		Conditions.DownedSkeletronOrQueenBee: Mods.HelpfulNPCs.Conditions.DownedSkeletronOrQueenBee
+	}
+}
+
+TownNPCMood_Princess: {
+	LoveNPC_HelpfulNPCs/EnvironmentalistNPC: "{NPCName} так усердно работает, чтобы сохранить природу!"
+	LoveNPC_HelpfulNPCs/FishermanNPC: "{NPCName} любит рыбачить со мной!"
+	LoveNPC_HelpfulNPCs/HunterNPC: "{NPCName} делает все возможное, чтобы защитить всех от монстров!"
+	LoveNPC_HelpfulNPCs/MinerNPC: "{NPCName} упорно трудится, чтобы добыть ресурсы для всех!"
+}
