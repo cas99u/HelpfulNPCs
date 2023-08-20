@@ -120,6 +120,13 @@ Mods: {
 			Chester.DisplayName: Честер
 		}
 
+		Bestiary: {
+			// EnvironmentalistNPC: The Environmentalist loves nature. He sells plants and animals for conservation. You wouldn't do anything bad with them, right?
+			// FishermanNPC: The Fisherman loves to fish all day. His connection to the Angler is unkown.
+			// HunterNPC: The Hunter strikes fear into the hearts of all monsters. Yes, his parents named him Hunter.
+			// MinerNPC: The Miner spends most of his time deep underground. For some reason, he actually enjoys mining.
+		}
+
 		Dialogue: {
 			EnvironmentalistNPC: {
 				// StandardDialogue1: Hey! Don't step on my plants!

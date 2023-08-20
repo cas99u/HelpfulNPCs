@@ -62,7 +62,7 @@ namespace HelpfulNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("The Fisherman loves to fish all day. His connection to the Angler is unkown."),
+				new FlavorTextBestiaryInfoElement("Mods.HelpfulNPCs.Bestiary.FishermanNPC"),
             });
         }
 

@@ -63,7 +63,7 @@ namespace HelpfulNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("The Miner spends most of his time deep underground. For some reason, he actually enjoys mining."),
+				new FlavorTextBestiaryInfoElement("Mods.HelpfulNPCs.Bestiary.MinerNPC"),
             });
         }
 

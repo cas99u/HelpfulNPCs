@@ -64,7 +64,7 @@ namespace HelpfulNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("The Environmentalist loves nature. He sells plants and animals for conservation. You wouldn't do anything bad with them, right?"),
+				new FlavorTextBestiaryInfoElement("Mods.HelpfulNPCs.Bestiary.EnvironmentalistNPC"),
             });
         }
 

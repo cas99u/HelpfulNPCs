@@ -64,7 +64,7 @@ namespace HelpfulNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("The Hunter strikes fear into the hearts of all monsters. Yes, his parents named him Hunter."),
+				new FlavorTextBestiaryInfoElement("Mods.HelpfulNPCs.Bestiary.HunterNPC"),
             });
         }
 
