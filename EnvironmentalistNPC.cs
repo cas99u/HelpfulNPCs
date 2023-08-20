@@ -152,7 +152,6 @@ namespace HelpfulNPCs
         public override void AddShops()
         {
             var plantShop = new NPCShop(Type, "Plants")
-                .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 5) })
                 .Add(new Item(ItemID.Cobweb) { shopCustomPrice = Item.buyPrice(copper: 10) })
                 .Add(ItemID.Coral)
                 .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(silver: 1) })

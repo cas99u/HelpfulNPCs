@@ -185,6 +185,7 @@ namespace HelpfulNPCs
             barShop.Register();
 
             var gemShop = new NPCShop(Type, "Blocks")
+                .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 5) })
                 .Add(new Item(ItemID.DirtBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
                 .Add(new Item(ItemID.StoneBlock) { shopCustomPrice = Item.buyPrice(copper: 2) })
                 .Add(new Item(ItemID.ClayBlock) { shopCustomPrice = Item.buyPrice(copper: 2) })
