@@ -50,7 +50,7 @@ namespace HelpfulNPCs
                 // Show either an Iron or Lead bar, depending on which is found naturally in the world.
                 dialogueTweakMod.Call("ReplaceShopButtonIcon", ModContent.NPCType<MinerNPC>(), "Terraria/Images/Item_" + ItemID.IronBar, () => WorldGen.SavedOreTiers.Iron != TileID.Lead, null);
                 dialogueTweakMod.Call("ReplaceShopButtonIcon", ModContent.NPCType<MinerNPC>(), "Terraria/Images/Item_" + ItemID.LeadBar, () => WorldGen.SavedOreTiers.Iron == TileID.Lead, null);
-                dialogueTweakMod.Call("ReplaceExtraButtonIcon", ModContent.NPCType<MinerNPC>(), "Terraria/Images/Item_" + ItemID.Diamond);
+                dialogueTweakMod.Call("ReplaceExtraButtonIcon", ModContent.NPCType<MinerNPC>(), "Terraria/Images/Item_" + ItemID.StoneBlock);
             }
         }
     }

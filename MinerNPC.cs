@@ -140,23 +140,25 @@ namespace HelpfulNPCs
         {
             if (firstButton)
             {
-                shop = "Bars";
+                shop = "Valuables";
             }
             else
             {
-                shop = "Gems";
+                shop = "Blocks";
             }
 
         }
 
         public override void AddShops()
         {
-            var barShop = new NPCShop(Type, "Bars")
-                .Add(new Item(ItemID.StoneBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                .Add(new Item(ItemID.DirtBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                .Add(new Item(ItemID.MudBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                .Add(new Item(ItemID.Granite) { shopCustomPrice = Item.buyPrice(copper: 1) })
-                .Add(new Item(ItemID.Marble) { shopCustomPrice = Item.buyPrice(copper: 1) })
+            var barShop = new NPCShop(Type, "Valuables")
+                .Add(ItemID.Amethyst)
+                .Add(ItemID.Topaz)
+                .Add(ItemID.Sapphire)
+                .Add(ItemID.Emerald)
+                .Add(ItemID.Ruby)
+                .Add(ItemID.Diamond)
+                .Add(ItemID.Amber)
                 .Add(ItemID.CopperBar)
                 .Add(ItemID.TinBar)
                 .Add(ItemID.IronBar)
@@ -182,14 +184,23 @@ namespace HelpfulNPCs
                 .Add(new Item(ItemID.LifeFruit) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera);
             barShop.Register();
 
-            var gemShop = new NPCShop(Type, "Gems")
-                .Add(ItemID.Amethyst)
-                .Add(ItemID.Topaz)
-                .Add(ItemID.Sapphire)
-                .Add(ItemID.Emerald)
-                .Add(ItemID.Ruby)
-                .Add(ItemID.Diamond)
-                .Add(ItemID.Amber);
+            var gemShop = new NPCShop(Type, "Blocks")
+                .Add(new Item(ItemID.DirtBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.StoneBlock) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.ClayBlock) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.SiltBlock) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                .Add(new Item(ItemID.SandBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.Sandstone) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.HardenedSand) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.SnowBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.IceBlock) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.SlushBlock) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                .Add(new Item(ItemID.MudBlock) { shopCustomPrice = Item.buyPrice(copper: 1) })
+                .Add(new Item(ItemID.Granite) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.Marble) { shopCustomPrice = Item.buyPrice(copper: 2) })
+                .Add(new Item(ItemID.AshBlock) { shopCustomPrice = Item.buyPrice(copper: 3) }, Condition.DownedSkeletron);
+
+
             gemShop.Register();
         }
 

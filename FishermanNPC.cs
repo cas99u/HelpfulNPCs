@@ -219,9 +219,9 @@ namespace HelpfulNPCs
                 .Add(ItemID.Scorpion)
                 .Add(ItemID.Sluggy)
                 .Add(ItemID.Snail)
+                .Add(ItemID.Stinkbug)
                 .Add(ItemID.WaterStrider)
-                .Add(ItemID.Worm)
-                .Add(new Item(ItemID.TruffleWorm) { shopCustomPrice = Item.buyPrice(gold: 25) });
+                .Add(ItemID.Worm);
 
             baitShop.Register();
         }

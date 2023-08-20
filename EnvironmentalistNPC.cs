@@ -199,14 +199,19 @@ namespace HelpfulNPCs
                 .Add(ItemID.BlueJay)
                 .Add(ItemID.Bunny)
                 .Add(ItemID.Cardinal)
+                .Add(ItemID.YellowCockatiel)
+                .Add(ItemID.GrayCockatiel)
                 .Add(ItemID.Duck)
                 .Add(ItemID.Frog)
                 .Add(ItemID.Goldfish)
                 .Add(ItemID.MallardDuck)
+                .Add(ItemID.Shimmerfly)
                 .Add(ItemID.FairyCritterBlue)
                 .Add(ItemID.FairyCritterGreen)
                 .Add(ItemID.FairyCritterPink)
                 .Add(ItemID.Grebe)
+                .Add(ItemID.ScarletMacaw)
+                .Add(ItemID.BlueMacaw)
                 .Add(ItemID.Mouse)
                 .Add(ItemID.Owl)
                 .Add(ItemID.Penguin)
@@ -216,9 +221,9 @@ namespace HelpfulNPCs
                 .Add(ItemID.Seahorse)
                 .Add(ItemID.Squirrel)
                 .Add(ItemID.SquirrelRed)
+                .Add(ItemID.Toucan)
                 .Add(ItemID.Turtle)
-                .Add(ItemID.TurtleJungle)
-                .Add(new Item(ItemID.EmpressButterfly) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.DownedEmpressOfLight);
+                .Add(ItemID.TurtleJungle);
             critterShop.Register();
         }
 
