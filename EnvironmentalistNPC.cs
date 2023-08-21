@@ -148,14 +148,12 @@ namespace HelpfulNPCs
 
 
         }
-
+        
         public override void AddShops()
         {
             var plantShop = new NPCShop(Type, "Plants")
-                .Add(new Item(ItemID.Cobweb) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                .Add(ItemID.Coral)
-                .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(silver: 1) })
-                .Add(new Item(ItemID.Starfish) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                
+                
                 .Add(ItemID.Mushroom)
                 .Add(ItemID.GrassSeeds)
                 .Add(ItemID.Pumpkin)

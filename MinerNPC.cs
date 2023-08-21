@@ -152,6 +152,7 @@ namespace HelpfulNPCs
         public override void AddShops()
         {
             var barShop = new NPCShop(Type, "Valuables")
+                .Add(new Item(ItemID.Cobweb) { shopCustomPrice = Item.buyPrice(copper: 10) })
                 .Add(ItemID.Amethyst)
                 .Add(ItemID.Topaz)
                 .Add(ItemID.Sapphire)

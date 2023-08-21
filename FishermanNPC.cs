@@ -151,6 +151,9 @@ namespace HelpfulNPCs
         public override void AddShops()
         {
             var fishShop = new NPCShop(Type, "Fish")
+                .Add(ItemID.Coral)
+                .Add(new Item(ItemID.Seashell) { shopCustomPrice = Item.buyPrice(silver: 1) })
+                .Add(new Item(ItemID.Starfish) { shopCustomPrice = Item.buyPrice(silver: 1) })
                 .Add(new Item(ModContent.ItemType<Items.FishCrate>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(ItemID.ArmoredCavefish)
                 .Add(ItemID.AtlanticCod)
