@@ -48,7 +48,7 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/EnvironmentalistNPC}"
 				}
 
-				// Census.SpawnCondition: Have a {$Items.DazzlingFlower.DisplayName} [i:HelpfulNPCs/DazzlingFlower] in your inventory
+				Census.SpawnCondition: Имейте {$Items.DazzlingFlower.DisplayName} [i:HelpfulNPCs/DazzlingFlower] в вашем инвенторе
 			}
 
 			FishermanNPC: {
@@ -70,7 +70,7 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/FishermanNPC}"
 				}
 
-				// Census.SpawnCondition: Have a {$Items.RadiantFish.DisplayName} [i:HelpfulNPCs/RadiantFish] in your inventory
+				Census.SpawnCondition: Имейте {$Items.RadiantFish.DisplayName} [i:HelpfulNPCs/RadiantFish] в вашем инвенторе
 			}
 
 			HunterNPC: {
@@ -92,7 +92,7 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/HunterNPC}"
 				}
 
-				// Census.SpawnCondition: Have a {$Items.GlisteningGel.DisplayName} [i:HelpfulNPCs/GlisteningGel] in your inventory
+				Census.SpawnCondition: Имейте {$Items.GlisteningGel.DisplayName} [i:HelpfulNPCs/GlisteningGel] в вашем инвенторе
 			}
 
 			MinerNPC: {
@@ -114,56 +114,81 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_HelpfulNPCs/MinerNPC}"
 				}
 
-				// Census.SpawnCondition: Have a {$Items.GlimmeringStone.DisplayName} [i:HelpfulNPCs/GlimmeringStone] in your inventory
+				Census.SpawnCondition: Имейте {$Items.GlimmeringStone.DisplayName} [i:HelpfulNPCs/GlimmeringStone] в вашем инвенторе
 			}
 
 			Chester.DisplayName: Честер
 		}
 
 		Bestiary: {
-			// EnvironmentalistNPC: The Environmentalist loves nature. He sells plants and animals for conservation. You wouldn't do anything bad with them, right?
-			// FishermanNPC: The Fisherman loves to fish all day. His connection to the Angler is unkown.
-			// HunterNPC: The Hunter strikes fear into the hearts of all monsters. Yes, his parents named him Hunter.
-			// MinerNPC: The Miner spends most of his time deep underground. For some reason, he actually enjoys mining.
+			EnvironmentalistNPC: Эколог любит природу. Он продает растения и животных для сохранения. Ты же не сделаешь с ними ничего плохого, верно?
+			FishermanNPC: Рыболов любит ловить рыбу весь день. Его связь с Рыбаком неизвестна.
+			HunterNPC: Охотник вселяет страх в сердца всех монстров. И да, родители назвали его Хантером.
+			MinerNPC: Шахтер проводит большую часть своего времени глубоко под землей. По какой-то причине ему действительно нравится заниматься майнингом.
+		}
+
+		NPCNames: {
+			EnvironmentalistNPC: {
+				Name1: Грегор
+				Name2: Мендаль
+				Name3: Теофраст
+				Name4: Гук
+			}
+
+			FishermanNPC: {
+				Name1: Эрнест
+				Name2: Томас
+				Name3: Майкл
+				Name4: Курт
+			}
+
+			HunterNPC.Name1: Охотник
+
+			MinerNPC: {
+				Name1: Голден
+				Name2: Джон
+				Name3: Эдвард
+				Name4: Томас
+			}
 		}
 
 		Dialogue: {
 			EnvironmentalistNPC: {
-				// StandardDialogue1: Hey! Don't step on my plants!
-				// StandardDialogue2: There's no such thing as magic beanstalks.
-				// StandardDialogue3: My research on Terrarian critters is almost complete.
-				// StandardDialogue4: Growing plants takes hardwork and dedication.
-				// ChatOption1: Plants
-				// ChatOption2: Critters
+				StandardDialogue1: Эй! Не наступай на мои растения!
+				StandardDialogue2: Волшебных бобовых стеблей не существует.
+				StandardDialogue3: Мое исследование террарианских тварей почти завершено.
+				StandardDialogue4: Выращивание растений требует упорного труда и самоотверженности.
+				ChatOption1: Растения
+				ChatOption2: Животные
 			}
 
 			FishermanNPC: {
-				// StandardDialogue1: Give a man a fish, and you feed him for a day. Teach a man to fish, and he'll break the game's progression.
-				// StandardDialogue2: *Snore*
-				// StandardDialogue3: How come sometimes I fish up junk? Who's been throwing things in the water?
-				// StandardDialogue4: Back in my day, even wooden crates would have titanium in them!
-				// ChatOption1: Fish
-				// ChatOption2: Bait
+				StandardDialogue1: Дайте человеку рыбу, и вы накормите его на целый день. Научите человека ловить рыбу, и вы накормите его на всю жизнь.
+				StandardDialogue2: *Храп*
+				StandardDialogue3: Почему я иногда вылавливаю мусор? Кто вообще бросает вещи в воду?
+				StandardDialogue4: В мое время даже в деревянных ящиках был титан!
+				ChatOption1: Рыба
+				ChatOption2: Наживка
 			}
 
 			HunterNPC: {
-				// StandardDialogue1: Quiet, I need to focus.
-				// StandardDialogue2: ...
-				// StandardDialogue3: Yes, I am Hunter the Hunter.
-				// StandardDialogue4: You should be glad that I'm not hunting you.
-				// ChatOption1: Monster Drops
-				// ChatOption2: Souls/Essences
-				// ChatOption3: Ammunition
-				// ChatOption4: Change Shop
+				StandardDialogue1: Тихо, мне нужно сосредоточиться.
+				StandardDialogue2: ...
+				StandardDialogue3: Да, я Хантер-Охотник.
+				StandardDialogue4: Ты должен быть рад, что я не охочусь за тобой.
+				ChatOption1: Вещи с монстров
+				ChatOption2: Души/Эссенции
+				ChatOption3: Боеприпасы
+				ChatOption4: Сменить магазин
 			}
 
 			MinerNPC: {
-				// StandardDialogue1: There's nothing like a good beer after coming back to the surface!
-				// StandardDialogue2: I have no use for these shiny gems and ore, want to buy them off me?
-				// StandardDialogue3: What do you mean I shouldn't mine at Y level 11?
-				// StandardDialogue4: Diamonds? I'm no expert, but I don't think you can make a sword out of them.
-				// ChatOption1: Valuables
-				// ChatOption2: Blocks
+				StandardDialogue1: Нет ничего лучше хорошего пива после возвращения на поверхность!
+				StandardDialogue2: Мне не нужны эти блестящие камушки и всякая руда. Что? Ты хочешь купить их у меня?
+				StandardDialogue3: Что ты имеешь в виду, говоря, что я должен майнить на 11-м уровне?
+				StandardDialogue4: Бриллианты? Я конечно не эксперт, но я не думаю, что из них можно сделать меч.
+				ChatOption1: Ценности
+				ChatOption2: Блоки
 			}
 		}
 

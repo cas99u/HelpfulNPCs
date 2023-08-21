@@ -108,10 +108,10 @@ namespace HelpfulNPCs
         public override List<string> SetNPCNameList()
         {
             return new List<string>()
-                { "Gold",
-                  "John",
-                  "Edward",
-                  "Thomas"
+                { Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.MinerNPC.Name1"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.MinerNPC.Name2"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.MinerNPC.Name3"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.MinerNPC.Name4")
             };
         }
 

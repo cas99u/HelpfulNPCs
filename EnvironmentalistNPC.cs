@@ -108,10 +108,10 @@ namespace HelpfulNPCs
         public override List<string> SetNPCNameList()
         {
             return new List<string>()
-                { "Gregor", 
-                  "Mendal",
-                  "Theophrastus",
-                  "Hooke"
+                { Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.EnvironmentalistNPC.Name1"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.EnvironmentalistNPC.Name2"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.EnvironmentalistNPC.Name3"),
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.EnvironmentalistNPC.Name4")
             };
         }
 

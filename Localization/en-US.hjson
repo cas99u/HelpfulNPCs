@@ -127,6 +127,31 @@ Mods: {
 			MinerNPC: The Miner spends most of his time deep underground. For some reason, he actually enjoys mining.
 		}
 
+		NPCNames: {
+			EnvironmentalistNPC: {
+				Name1: Gregor
+				Name2: Mendal
+				Name3: Theophrastus
+				Name4: Hooke
+			}
+
+			FishermanNPC: {
+				Name1: Ernest
+				Name2: Thomas
+				Name3: Michael
+				Name4: Curt
+			}
+
+			HunterNPC.Name1: Hunter
+
+			MinerNPC: {
+				Name1: Gold
+				Name2: John
+				Name3: Edward
+				Name4: Thomas
+			}
+		}
+
 		Dialogue: {
 			EnvironmentalistNPC: {
 				StandardDialogue1: Hey! Don't step on my plants!

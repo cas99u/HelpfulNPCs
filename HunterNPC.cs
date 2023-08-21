@@ -109,7 +109,8 @@ namespace HelpfulNPCs
         public override List<string> SetNPCNameList()
         {
             return new List<string>()
-                { "Hunter",
+                { 
+                  Language.GetTextValue("Mods.HelpfulNPCs.NPCNames.HunterNPC.Name1")
             };
         }
 
